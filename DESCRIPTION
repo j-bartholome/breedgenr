@@ -1,0 +1,17 @@
+Package: breedgenr
+Type: Package
+Title: A non-parametric based breeding program simulator 
+Version: 0.0.0.9000
+Author: person("Jérôme", "Bartholomé", email = "jerome.bartholome@cirad.fr",
+        role = c("aut", "cre"))
+Depends: R (>= 3.4.2)
+Imports: abind, foreach, parallel, MASS, randomForest 
+Suggests: 
+    testthat
+Maintainer: Jerome Bartholome <jerome.bartholome@cirad.fr>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.0
