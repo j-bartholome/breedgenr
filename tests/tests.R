@@ -1,4 +1,5 @@
-# Evaluation with BGLR Data -----------------------------------------------
+# Evaluation with package data  -------------------------------------------
+
 # data prep
 haplo <- rice1_x
 x <- aperm(haplo, perm = c(2, 1, 3))
@@ -42,7 +43,7 @@ system.time(
     x = x,
     y = y,
     ntree = 100,
-    mtry = seq(20, 100, 50),
+    mtry = c(floor(sqrt(nrow(rice1_x))^c(0.8, 1, 1.2))),
     folds = folds,
     n_rep = n_rep,
     nb_cores = nb_cores
@@ -67,7 +68,7 @@ system.time(
     nb_ind_P0 = nb_ind_P0,
     method = 'RF',
     ntree = 500,
-    mtry = seq(10, 100, 30),
+    mtry = c(floor(sqrt(nrow(rice1_x))^c(0.8, 1, 1.2))),
     folds = folds,
     n_rep = n_rep,
     nb_cores = nb_cores,
@@ -221,7 +222,6 @@ pop <- create_population(
 )
 
 
-
 pop <- create_population(
   haplo = haplo,
   pheno = pheno,
@@ -256,64 +256,3 @@ pop <- create_population(
   nb_cores = 1,
   verbose = T
 )
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-haplo <- matrix(1:100, ncol = 10, dimnames = list(1:10, 1:10))
-
-
-test <- function(...) {
-  ellipsis <- list(...)
-  print(str(ellipsis))
-  val <- as.list(substitute(list(...)))[-1L]
-  print(str(val))
-  if (any(lengths(ellipsis) > 1)) {
-  cat("\n parameters optimization \n")
-  } else {
-    cat("\n  No parameters optimization \n")
-    opt_param <- rep(ellipsis, 2)
-    print(opt_param)
-  }
-  return(ellipsis)
-}
-
-test <- function(...) {
-  ellipsis <- list(...)
-  print(str(ellipsis))
-  print(rep(ellipsis,2))
-  print(rep(list(ellipsis),2))
-  # val <- as.list(substitute(list(...)))[-1L]
-  # print(str(val))
-  # print(rep(val,2))
-
-}
-
-val <- test(n = 1, simul = 1)
-
-test(n = 1, simul = 1)
-
-
-
-test <- function(simul = TRUE,
-                 ...) {
-  ellipsis <- list(...)
-  stopifnot(is.logical(simul), length(simul) == 1)
-  print(is.null(ellipsis$mtry))
-}
-test(n = 1, simul = 1)

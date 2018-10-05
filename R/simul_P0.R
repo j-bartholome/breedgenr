@@ -24,12 +24,40 @@
 #' @param verbose logical scalar: TRUE (default) or FALSE
 #' @param ... further arguments to be passed to or from methods.
 #'
-#' @return A list :
-#'  *
-#'  *
+#' @return A list with the following elements:
+#'  \itemize{
+#'  \item{'haplo'}{ an array with the haplotype of the new population}
+#'  \item{'geno'}{ a matrix with the genotype of the new population}
+#'  \item{'gen_val'}{ a vector or a list of vectors for each trait containing the genetic values}
+#'  \item{'phen_val'}{a vector or a list of vectors for each trait containing the phenotypic values}
+#'  \item{'map'}{ a data.frame containg the position of the genetic markers}
+#'  \item{'opt_param'}{ a data.frame with the value of parameter after optimization}
+#' }
 #' @export
 #'
 #' @examples
+#' # Takes time!
+#' system.time(
+#' P0_RF <- simul_P0(
+#'   haplo = rice1_x,
+#'   pheno = rice1_y,
+#'   map = rice1_map,
+#'   RR = 244000,
+#'   h2  =rep(0.3, 3),,
+#'   nb_gen = 5,
+#'   nb_ind_gen = 1000,
+#'   nb_ind_P0 = 200,
+#'   method = 'RF',
+#'   ntree = 1000,
+#'   mtry = c(floor(sqrt(nrow(rice1_x))^c(0.8, 1, 1.2))),
+#'   folds = 5,
+#'   n_rep = 1,
+#'   nb_cores = 2,
+#'   verbose = TRUE
+#' )
+#' )
+#'
+#'
 simul_P0 <- function(haplo,
                      pheno,
                      map,

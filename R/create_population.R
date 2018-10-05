@@ -31,10 +31,14 @@
 #' @param ... further arguments to be passed to or from methods.
 #'
 #' @return
-#' A list :
+#' A list with the following elements:
 #'  \itemize{
 #'  \item{'haplo'}{ an array with the haplotype of the new population}
 #'  \item{'geno'}{ a matrix with the genotype of the new population}
+#'  \item{'gen_val'}{ a vector or a list of vectors for each trait containing the genetic values}
+#'  \item{'phen_val'}{a vector or a list of vectors for each trait containing the phenotypic values}
+#'  \item{'map'}{ a data.frame containg the position of the genetic markers}
+#'  \item{'opt_param'}{ a data.frame with the value of parameter after optimization}
 #' }
 #' @export
 #'
